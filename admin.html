@@ -1,0 +1,33 @@
+<section class="admin-section">
+  <h2>إضافة منتج جديد</h2>
+  <input type="text" id="title" placeholder="اسم المنتج">
+  <input type="text" id="description" placeholder="وصف المنتج">
+  <input type="number" id="price" placeholder="السعر">
+  <input type="text" id="sizes" placeholder="المقاسات (S,M,L)">
+  <input type="text" id="tag" placeholder="علامة المنتج">
+  <input type="file" id="image" accept="image/*">
+  <button id="addProductBtn">أضف المنتج</button>
+  <div id="status"></div>
+</section>
+<script>
+document.getElementById("addProductBtn").onclick = async () => {
+  const formData = new FormData();
+
+  formData.append("title", document.getElementById("title").value);
+  formData.append("description", document.getElementById("description").value);
+  formData.append("price", document.getElementById("price").value);
+  formData.append("sizes", document.getElementById("sizes").value);
+  formData.append("tag", document.getElementById("tag").value);
+
+  const imageFile = document.getElementById("image").files[0];
+  formData.append("image", imageFile);
+
+  const res = await fetch('/add-product', {
+    method: 'POST',
+    body: formData
+  });
+
+  const data = await res.json();
+  document.getElementById("status").innerText = "✅ تم إضافة المنتج";
+};
+</script>

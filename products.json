@@ -1,0 +1,42 @@
+[
+  {
+    "title": "بدلات رسميه",
+    "description": "اقمشه فاخره وخياط في قمه الابداع",
+    "price": 129,
+    "sizes": ["S","M","L"],
+    "tag": "شحن سريع",
+    "image": "images/suit.jpg"
+  },
+  {
+    "title": "قميص صيفي",
+    "description": "قماش خفيف ومريح — مقاسات متوفرة.",
+    "price": 79,
+    "sizes": ["M","L"],
+    "tag": "خصم 10%",
+    "image": "images/shirt.jpg"
+  },
+  {
+    "title": "ملابس شتويه",
+    "description": "نقول وداعا للبرد معا هذه الملابس المتالقه",
+    "price": 45,
+    "sizes": ["S","M","L"],
+    "tag": "إعادة مضمونة",
+    "image": "images/winter.jpg"
+  },
+  {
+    "title": "معاوز رجالي",
+    "description": "معاوز بيضاني لحجي مزجات دبعي",
+    "price": 199,
+    "sizes": ["M","L","XL"],
+    "tag": "شحن مجاني",
+    "image": "images/jacket.jpg"
+  },
+  {
+    "title":"اكوات تركي درجه اولى",
+    "description":"كوت تركي سلك درجه اولى",
+    "price":"45000",
+    "sizes":"42,44,46,48,50,52",
+    "tag":"شحن داخل اب مجان",
+   "image":"imaداخjacket.jpg"
+  }
+]

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>السلة</title>
+</head>
+<body>
+
+<h2>سلة المشتريات</h2>
+<div id="cart"></div>
+
+<script>
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+const div = document.getElementById("cart");
+
+cart.forEach(item=>{
+    div.innerHTML += `
+        <p>${item.title} - ${item.price} ريال</p>
+    `;
+});
+</script>
+
+</body>
+</html>

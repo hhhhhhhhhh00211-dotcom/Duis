@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>الدعيس مول — متجر فاخر 3D</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0b0b0b;
+  --card:#1a1a1a;
+  --gold:#ffd700;
+  --gold-dark:#b38f00;
+  --white:#ffffff;
+  --muted:rgba(255,255,255,0.85);
+  --glass: rgba(255,255,255,0.05);
+  --glass-2: rgba(255,255,255,0.02);
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:'Cairo', sans-serif;}
+body{background:linear-gradient(180deg,#1a1a1a,#1a1a1a);color:var(--white);}
+
+/* Logo & header */
+.site-header{display:flex;align-items:center;justify-content:space-between;padding:20px 28px;background:linear-gradient(90deg,var(--glass),transparent);position:sticky;top:0;z-index:50;border-bottom:1px solid rgba(255,255,255,0.1);backdrop-filter:blur(6px);}
+.brand{display:flex;align-items:center;gap:12px;}
+.logo{width:60px;height:60px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:20px;background:linear-gradient(135deg,var(--gold-dark),var(--gold));color:var(--white);animation:glow 2s infinite alternate;}
+@keyframes glow{0%{box-shadow:0 0 12px var(--gold);}50%{box-shadow:0 0 24px var(--gold);}} 
+.brand h1{margin:0;font-size:18px;color:var(--gold);letter-spacing:0.5px}
+.brand p{margin:0;font-size:12px;color:var(--white)}
+.brand .ad-logo{margin-left:6px;font-weight:900;font-size:20px;color:var(--white);background:linear-gradient(45deg,var(--gold-dark),var(--gold));padding:4px 8px;border-radius:6px;}
+
+.search-box{flex:1;max-width:720px;display:flex;align-items:center;gap:12px}
+.search-box input{width:100%;padding:12px 16px;border-radius:12px;border:0;background:var(--glass-2);color:var(--white);outline:none;font-size:15px;box-shadow:inset 0 1px 0 rgba(255,255,255,0.05);}
+.search-btn{padding:10px 14px;border-radius:10px;border:0;background:linear-gradient(90deg,var(--gold-dark),var(--gold));cursor:pointer;font-weight:700;color:#000;box-shadow:0 6px 16px rgba(255,215,0,0.5);transition:0.3s;}
+.search-btn:hover{transform:translateY(-3px) scale(1.05);box-shadow:0 10px 24px rgba(255,215,0,0.8);}
+.actions{display:flex;gap:12px;align-items:center}
+.icon-btn{background:var(--card);padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.05);cursor:pointer;transition:0.3s;color:var(--white);}
+.icon-btn:hover{transform:translateY(-4px) scale(1.05);box-shadow:0 8px 20px rgba(255,215,0,0.4);}
+
+/* Hero */
+.hero{display:grid;grid-template-columns:1fr;gap:18px;padding:36px 28px 24px;}
+.hero-card{background:linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));padding:28px;border-radius:18px;display:flex;gap:18px;align-items:center;justify-content:space-between;box-shadow:0 10px 30px rgba(0,0,0,0.7);}
+.hero-left{flex:1}
+.hero-left h2{margin:0;font-size:28px;color:var(--gold)}
+.hero-left p{margin:8px 0 0;color:var(--white);max-width:640px}
+.cta-row{display:flex;gap:12px;margin-top:16px}
+.btn-primary{padding:12px 18px;border-radius:12px;border:0;font-weight:700;cursor:pointer;background:linear-gradient(90deg,var(--gold-dark),var(--gold));color:#000;box-shadow:0 6px 16px rgba(255,215,0,0.5);transition:0.3s;animation:btnGlow 3s infinite alternate;}
+.btn-primary:hover{transform:translateY(-4px) scale(1.08);box-shadow:0 12px 28px rgba(255,215,0,0.9);}
+@keyframes btnGlow{0%{box-shadow:0 6px 16px rgba(255,215,0,0.4);}50%{box-shadow:0 8px 24px rgba(255,215,0,0.7);}}
+.btn-outline{padding:12px 18px;border-radius:12px;border:1px solid var(--gold);background:transparent;color:var(--gold);cursor:pointer;transition:0.3s;}
+.btn-outline:hover{transform:translateY(-3px) scale(1.05);box-shadow:0 8px 20px rgba(255,215,0,0.5);}
+
+.hero-right{width:280px;display:flex;flex-direction:column;gap:12px}
+.promo{background:linear-gradient(180deg,#2a2a2a,#111);padding:14px;border-radius:12px;text-align:center;box-shadow:0 4px 12px rgba(0,0,0,0.5);transition:0.3s;}
+.promo:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 8px 22px rgba(255,215,0,0.4);}
+.promo h3{margin:0 0 6px;font-size:16px;color:var(--gold)}
+.promo p{margin:0;color:var(--white);font-size:13px}
+
+/* Products grid */
+.store{padding:24px 28px 80px;display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+.card{background:var(--card);padding:14px;border-radius:14px;border:1px solid rgba(255,215,0,0.15);transition:transform .3s,box-shadow .3s;color:var(--white);}
+.card:hover{transform:translateY(-8px) scale(1.05);box-shadow:0 12px 28px rgba(255,215,0,0.5);}
+.product-media{height:160px;border-radius:12px;background:linear-gradient(135deg,var(--gold-dark),rgba(255,215,0,0.2));display:flex;align-items:end;justify-content:center;padding:10px;transition:0.3s;}
+.product-media:hover{transform:scale(1.05);box-shadow:0 6px 16px rgba(255,215,0,0.4);}
+.price-tag{background:rgba(0,0,0,0.6);padding:6px 10px;border-radius:10px;font-weight:700;color:var(--gold)}
+.card h4{margin:12px 0 6px;font-size:16px;color:var(--gold)}
+.card p{margin:0;color:var(--white);font-size:13px}
+.card .meta{display:flex;justify-content:space-between;align-items:center;margin-top:12px}
+.tag{font-size:12px;padding:6px 8px;border-radius:8px;background:rgba(255,215,0,0.08);color:var(--gold)}
+
+/* Modal Login */
+.modal{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.75);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:0.3s;}
+.modal.active{opacity:1;pointer-events:auto;}
+.modal-content{background:var(--card);padding:28px;border-radius:18px;max-width:400px;width:100%;text-align:center;box-shadow:0 12px 32px rgba(255,215,0,0.6);}
+.modal-content h3{color:var(--gold);margin-bottom:16px}
+.modal-content input{width:100%;padding:12px;margin-bottom:12px;border-radius:10px;border:1px solid var(--gold);background:var(--glass-2);color:var(--white);outline:none}
+.modal-content button{padding:12px 18px;border-radius:12px;border:0;background:linear-gradient(90deg,var(--gold-dark),var(--gold));color:#000;font-weight:700;cursor:pointer;transition:0.3s}
+.modal-content button:hover{transform:translateY(-3px) scale(1.05);box-shadow:0 8px 20px rgba(255,215,0,0.7);}
+.close-modal{position:absolute;top:12px;right:12px;cursor:pointer;font-weight:900;color:var(--gold)}
+
+/* Footer */
+.site-footer{padding:28px;border-top:1px solid rgba(255,255,255,0.1);display:flex;justify-content:space-between;align-items:center;color:var(--white)}
+
+/* Responsive */
+@media (max-width:1000px){.store{grid-template-columns:repeat(2,1fr)}.hero{grid-template-columns:1fr}}
+@media (max-width:640px){.site-header{flex-direction:column;align-items:stretch}.search-box{order:3}.store{grid-template-columns:1fr}.hero-right{display:none}.brand h1{font-size:16px}}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="brand">
+    <div class="logo">🛍️</div>
+    <div>
+      <h1>الدعيس مول | Al-Duais Mall <span class="ad-logo">AD</span></h1>
+      <p>أفضل محلات التجزئة — عروض يومية وخصومات حصرية</p>
+    </div>
+  </div>
+
+  <div class="search-box">
+    <input placeholder="ابحث عن منتج، متجر، أو علامة تجارية...">
+    <button class="search-btn">ابحث</button>
+  </div>
+
+  <div class="actions">
+    <button class="icon-btn" id="loginBtn">تسجيل / دخول</button>
+    <button class="icon-btn">المفضلة</button>
+    <button class="icon-btn">العربة (3)</button>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="hero-card">
+    <div class="hero-left">
+      <h2>اكتشف أحدث العروض من محلات الدعيس مول</h2>
+      <p>تسوّق من مجموعة واسعة من المتاجر — إلكترونيات، أزياء، أدوات منزلية، ومستحضرات تجميل. توصيل سريع وخيارات دفع آمنة.</p>
+      <div class="cta-row">
+        <button class="btn-primary">تسوّق الآن</button>
+        <button class="btn-outline">العروض اليومية</button>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="promo">
+        <h3>خصم خاص 25% على أول طلب</h3>
+        <p>استخدم الكود: <strong>DMS25</strong> عند الدفع — ساري حتى نهاية الشهر.</p>
+      </div>
+      <div class="promo">
+        <h3>توصيل مجاني داخل المدينة</h3>
+        <p>للطلبات التي تزيد عن 50 ريال.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="store">
+  <!-- المنتجات الثابتة -->
+  <article class="card">
+    <div class="product-media"><div class="price-tag">ريال 129</div></div>
+    <h4>بدلات رسميه</h4>
+    <p>اقمشه فاخره وخياط في قمه الابداع</p>
+    <div class="meta">
+      <span class="tag">شحن سريع</span>
+      <button class="btn-outline">أضف إلى العربة</button>
+    </div>
+  </article>
+
+  <article class="card">
+    <div class="product-media"><div class="price-tag">ريال 79</div></div>
+    <h4>قميص صيفي</h4>
+    <p>قماش خفيف ومريح — مقاسات متوفرة.</p>
+    <div class="meta">
+      <span class="tag">خصم 10%</span>
+      <button class="btn-outline">أضف إلى العربة</button>
+    </div>
+  </article>
+
+  <article class="card">
+    <div class="product-media"><div class="price-tag">ريال 45</div></div>
+    <h4>ملابس شتويه</h4>
+    <p>نقول وداعا للبرد معا هذه الملابس المتالقه</p>
+    <div class="meta">
+      <span class="tag">إعادة مضمونة</span>
+      <button class="btn-outline">أضف إلى العربة</button>
+    </div>
+  </article>
+
+  <article class="card">
+    <div class="product-media"><div class="price-tag">ريال 199</div></div>
+    <h4>معاوز رجالي</h4>
+    <p>معاوز بيضاني لحجي مزجات دبعي</p>
+    <div class="meta">
+      <span class="tag">شحن مجاني</span>
+      <button class="btn-outline">أضف إلى العربة</button>
+    </div>
+  </article>
+</section>
+</main>
+
+<footer class="site-footer">
+  <div>
+    <strong>الدعيس مول</strong>
+    <div style="color:var(--white);font-size:13px">جميع الحقوق محفوظة © 2025</div>
+  </div>
+  <div style="text-align:left;color:var(--white);font-size:13px">
+    اتصل بنا: info@daaismall.example | هاتف: 0123456789
+  </div>
+</footer>
+
+<div class="modal" id="loginModal">
+  <div class="modal-content">
+    <span class="close-modal" id="closeModal">×</span>
+    <h3>تسجيل الدخول</h3>
+    <input placeholder="البريد الإلكتروني">
+    <input placeholder="كلمة المرور" type="password">
+    <button>تسجيل الدخول</button>
+  </div>
+</div>
+
+<script>
+// ================= LOGIN =================
+const loginBtn = document.getElementById('loginBtn');
+const loginModal = document.getElementById('loginModal');
+const closeModal = document.getElementById('closeModal');
+
+loginBtn.onclick = ()=>{loginModal.classList.add('active');}
+closeModal.onclick = ()=>{loginModal.classList.remove('active');}
+window.onclick = (e)=>{if(e.target===loginModal){loginModal.classList.remove('active');}}
+
+// ================= CART =================
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+function addToCart(product){
+  cart.push(product);
+  localStorage.setItem("cart", JSON.stringify(cart));
+  alert("تمت الإضافة إلى العربة");
+}
+
+// ================= CART BUTTON =================
+const cartBtn = document.querySelectorAll(".icon-btn")[2];
+cartBtn.onclick = ()=>{window.location.href = "cart.html";};
+
+// ================= STATIC PRODUCTS =================
+document.querySelectorAll(".card").forEach((card)=>{
+  const title = card.querySelector("h4")?.innerText || "منتج";
+  const price = card.querySelector(".price-tag")?.innerText.replace("ريال","").trim() || 0;
+  const btn = card.querySelector("button");
+  if(btn){
+    btn.onclick = ()=>{
+      addToCart({title:title, price:price});
+    }
+  }
+});
+
+// ================= API PRODUCTS =================
+fetch('/api/products')
+  .then(res => res.json())
+  .then(products => {
+    const store = document.querySelector('.store');
+    products.forEach(p => {
+      const article = document.createElement("article");
+      article.className = "card";
+      article.innerHTML = `
+        <div class="product-media">
+          <img src="${p.image}" alt="${p.title}" style="width:100%">
+          <div class="price-tag">ريال ${p.price}</div>
+        </div>
+        <h4>${p.title}</h4>
+        <p>${p.description}</p>
+        <p>المقاسات: ${p.sizes.join(", ")}</p>
+        <div class="meta">
+          <span class="tag">${p.tag}</span>
+          <button class="btn-outline">أضف إلى العربة</button>
+        </div>
+      `;
+      article.querySelector("button").onclick = ()=>{ addToCart(p); };
+      store.appendChild(article);
+    });
+  })
+  .catch(()=>{ console.log("السيرفر غير شغال حالياً"); });
+
+</script>
+
+</body>
+</html>
