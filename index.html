@@ -197,6 +197,30 @@ body{background:linear-gradient(180deg,#1a1a1a,#1a1a1a);color:var(--white);}
     <input placeholder="كلمة المرور" type="password">
     <button>تسجيل الدخول</button>
   </div>
+  <body>
+
+<!-- كل محتوى موقعك هنا -->
+
+<div id="products"></div>
+
+<!-- 🔥 هنا تضع الكود الثاني -->
+<script>
+let products = JSON.parse(localStorage.getItem("products") || "[]");
+
+const box = document.getElementById("products");
+
+products.forEach(p=>{
+  box.innerHTML += `
+    <div class="card">
+      <img src="${p.img}">
+      <h3>${p.name}</h3>
+      <p>${p.price}</p>
+    </div>
+  `;
+});
+</script>
+
+  </body>
 </div>
 
 <script>
