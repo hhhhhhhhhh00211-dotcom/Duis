@@ -1,33 +1,26 @@
-<section class="admin-section">
-  <h2>إضافة منتج جديد</h2>
-  <input type="text" id="title" placeholder="اسم المنتج">
-  <input type="text" id="description" placeholder="وصف المنتج">
-  <input type="number" id="price" placeholder="السعر">
-  <input type="text" id="sizes" placeholder="المقاسات (S,M,L)">
-  <input type="text" id="tag" placeholder="علامة المنتج">
-  <input type="file" id="image" accept="image/*">
-  <button id="addProductBtn">أضف المنتج</button>
-  <div id="status"></div>
-</section>
+<div style="position:fixed;top:10px;right:10px;background:#fff;padding:15px;box-shadow:0 0 10px #ccc;border-radius:10px;z-index:9999">
+  <h3>➕ إضافة منتج</h3>
+
+  <input id="name" placeholder="اسم المنتج"><br><br>
+  <input id="price" placeholder="السعر"><br><br>
+  <input id="img" placeholder="رابط الصورة"><br><br>
+
+  <button onclick="addProduct()">إضافة</button>
+</div>
+
 <script>
-document.getElementById("addProductBtn").onclick = async () => {
-  const formData = new FormData();
+function addProduct(){
+  let products = JSON.parse(localStorage.getItem("products") || "[]");
 
-  formData.append("title", document.getElementById("title").value);
-  formData.append("description", document.getElementById("description").value);
-  formData.append("price", document.getElementById("price").value);
-  formData.append("sizes", document.getElementById("sizes").value);
-  formData.append("tag", document.getElementById("tag").value);
+  let newProduct = {
+    name: document.getElementById("name").value,
+    price: document.getElementById("price").value,
+    img: document.getElementById("img").value
+  };
 
-  const imageFile = document.getElementById("image").files[0];
-  formData.append("image", imageFile);
+  products.push(newProduct);
+  localStorage.setItem("products", JSON.stringify(products));
 
-  const res = await fetch('/add-product', {
-    method: 'POST',
-    body: formData
-  });
-
-  const data = await res.json();
-  document.getElementById("status").innerText = "✅ تم إضافة المنتج";
-};
+  alert("تمت الإضافة ✅");
+}
 </script>
