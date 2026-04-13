@@ -185,7 +185,7 @@ body{background:linear-gradient(180deg,#1a1a1a,#1a1a1a);color:var(--white);}
     <div style="color:var(--white);font-size:13px">جميع الحقوق محفوظة © 2025</div>
   </div>
   <div style="text-align:left;color:var(--white);font-size:13px">
-    اتصل بنا: info@daaismall.example | هاتف: 0123456789
+    اتصل بنا: info@daaismall.example | هاتف:772772660
   </div>
 </footer>
 
@@ -197,30 +197,6 @@ body{background:linear-gradient(180deg,#1a1a1a,#1a1a1a);color:var(--white);}
     <input placeholder="كلمة المرور" type="password">
     <button>تسجيل الدخول</button>
   </div>
-  <body>
-
-<!-- كل محتوى موقعك هنا -->
-
-<div id="products"></div>
-
-<!-- 🔥 هنا تضع الكود الثاني -->
-<script>
-let products = JSON.parse(localStorage.getItem("products") || "[]");
-
-const box = document.getElementById("products");
-
-products.forEach(p=>{
-  box.innerHTML += `
-    <div class="card">
-      <img src="${p.img}">
-      <h3>${p.name}</h3>
-      <p>${p.price}</p>
-    </div>
-  `;
-});
-</script>
-
-  </body>
 </div>
 
 <script>
@@ -246,7 +222,7 @@ const cartBtn = document.querySelectorAll(".icon-btn")[2];
 cartBtn.onclick = ()=>{window.location.href = "cart.html";};
 
 // ================= STATIC PRODUCTS =================
-document.querySelectorAll(".card").forEach((card)=>{
+document.querySelectorAll("products.json").forEach((card)=>{
   const title = card.querySelector("h4")?.innerText || "منتج";
   const price = card.querySelector(".price-tag")?.innerText.replace("ريال","").trim() || 0;
   const btn = card.querySelector("button");
@@ -285,6 +261,36 @@ fetch('/api/products')
   .catch(()=>{ console.log("السيرفر غير شغال حالياً"); });
 
 </script>
+<!-- ================= ADMIN PRODUCTS ================= -->
+<script>
+// جلب المنتجات من localStorage (من صفحة admin)
+let adminProducts = JSON.parse(localStorage.getItem("products") || "[]");
 
+const store = document.querySelector('.store');
+
+adminProducts.forEach(p => {
+  const article = document.createElement("article");
+  article.className = "card";
+
+  article.innerHTML = `
+    <div class="product-media">
+      <img src="${p.img}" style="width:100%">
+      <div class="price-tag">ريال ${p.price}</div>
+    </div>
+    <h4>${p.name}</h4>
+    <p>منتج مضاف من لوحة التحكم</p>
+    <div class="meta">
+      <span class="tag">جديد</span>
+      <button class="btn-outline">أضف إلى العربة</button>
+    </div>
+  `;
+
+  article.querySelector("button").onclick = ()=>{
+    addToCart({title:p.name, price:p.price});
+  };
+
+  store.appendChild(article);
+});
+</script>
 </body>
 </html>
